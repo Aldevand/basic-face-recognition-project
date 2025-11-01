@@ -1,0 +1,24 @@
+# ------------------------------------
+# 1. DATASET PRIVAT (HARUS DIABAIKAN)
+# SESUAIKAN DENGAN FOLDER DI PROJECT ANDA
+# ------------------------------------
+data_train/
+petra/
+yulen/
+
+# ------------------------------------
+# 2. FILE SENSITIF & OUTPUT LOKAL
+# ------------------------------------
+.env         # File environment variable (jika ada API key, dll.)
+*.log        # File log
+*.pth        # Bobot model (model weights) yang besar
+*.pt
+model_output/ # Hasil pelatihan model (jika besar)
+trainer.yml  # Mengabaikan file konfigurasi trainer jika sensitif/lokal
+
+# ------------------------------------
+# 3. FILE YANG DIBANGKITKAN SISTEM
+# ------------------------------------
+__pycache__/
+.ipynb_checkpoints/ 
+.DS_Store
