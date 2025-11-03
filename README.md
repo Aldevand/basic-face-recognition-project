@@ -90,10 +90,7 @@ Proyek ini dapat dijadikan **dasar untuk pengembangan sistem pengenalan wajah ya
 <img width="1366" height="768" alt="Screenshot (1872)" src="https://github.com/user-attachments/assets/9a575c0d-29a9-4e63-b639-d3f5d190c8f4" />
 <img width="1366" height="768" alt="Screenshot (1874)" src="https://github.com/user-attachments/assets/870a618d-4777-459c-b017-97159211a2c1" />
 
-
-
-
-
+---
 
 ## 🧩 Teknologi yang Digunakan
 - **Python 3.11+**  
@@ -104,4 +101,4 @@ Proyek ini dapat dijadikan **dasar untuk pengembangan sistem pengenalan wajah ya
 
 ---
 
-📌 *Dikembangkan sebagai proyek dasar Computer Vision menggunakan OpenCV dan LBPH Face Recognizer oleh Petra & Yulan.*
+📌 *Dikembangkan sebagai proyek dasar Computer Vision menggunakan OpenCV dan LBPH Face Recognizer oleh Petra.*
