@@ -8,12 +8,10 @@ import os
 # ========================================
 # BLOK 2: SET PATH & NAMA ORANG
 # ========================================
-# GANTI INI SESUAI STRUKTUR KAMU
+# path ke folder dataset training
 DATA_PATH = r'D:\Project_Computer_Vision\data_train'  # Pakai raw string (r'') biar backslash aman
 
-# Daftar nama orang = nama folder (otomatis dari folder)
-# Kita baca langsung dari folder, jadi gak perlu tulis manual
-names = []  # Akan diisi otomatis: ['petra', 'yulan']
+names = []  # Akan diisi otomatis sesuai nama folder
 
 # ========================================
 # BLOK 3: BUAT MODEL & DETECTOR
@@ -33,7 +31,7 @@ print("Scanning dataset...")
 for idx, folder_name in enumerate(os.listdir(DATA_PATH)):
     folder_path = os.path.join(DATA_PATH, folder_name)
     
-    # Pastikan ini folder (bukan file)
+        # Cek apakah itu folder
     if not os.path.isdir(folder_path):
         continue
     

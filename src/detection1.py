@@ -2,7 +2,7 @@
 # BLOK 1: IMPORT LIBRARY
 # ========================================
 import cv2
-import time  # Tambahkan untuk jeda sebelum kamera aktif
+import time  # Untuk jeda waktu
 
 # ========================================
 # BLOK 2: LOAD MODEL DETEKSI WAJAH
