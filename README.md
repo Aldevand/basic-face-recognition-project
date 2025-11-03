@@ -1,4 +1,4 @@
-# 🧠 Face Recognition System — Petra & Yulan
+# 🧠 Face Recognition System 
 
 Proyek ini merupakan implementasi dasar dari **sistem pengenalan wajah (Face Recognition)** menggunakan pustaka **OpenCV** dan algoritma **Local Binary Patterns Histograms (LBPH)**.  
 Sistem ini mampu **mendeteksi dan mengenali wajah secara real-time** dari kamera, menampilkan label identitas (nama) pada wajah yang terdeteksi, serta menghitung jumlah wajah yang muncul di layar.
