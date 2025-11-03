@@ -9,23 +9,24 @@ import os
 # BLOK 2: LOAD MODEL & NAMA ORANG
 # ========================================
 # Cek apakah file model ada
-if not os.path.exists('trainer.yml'):
+if not os.path.exists('../model/trainer.yml'):
     print("ERROR: File 'trainer.yml' tidak ditemukan!")
     print("   Jalankan 'train.py' dulu untuk training.")
     exit()
 
-if not os.path.exists('names.txt'):
+if not os.path.exists('../model/names.txt'):
     print("ERROR: File 'names.txt' tidak ditemukan!")
     print("   Pastikan training selesai.")
     exit()
 
 # Load model
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('trainer.yml')
+recognizer.read('../model/trainer.yml')
 
 # Baca nama dari file
-with open('names.txt', 'r') as f:
+with open('../model/names.txt', 'r') as f:
     names = [line.strip() for line in f.readlines()]
+
 
 print(f"Model berhasil dimuat!")
 print(f"Orang yang dikenali: {names}")
@@ -67,7 +68,7 @@ while True:
         print("Gagal baca frame. Mencoba ulang...")
         continue
 
-    # Flip horizontal (biar seperti cermin)
+    # Flip horizontal
     frame = cv2.flip(frame, 1)
 
     # Ubah ke grayscale
@@ -95,7 +96,7 @@ while True:
         # PREDICT
         id_, confidence = recognizer.predict(face_crop)
 
-        # Threshold: <120 = dikenali
+        # Threshold: <110 = dikenali
         if confidence < 110:
             nama = names[id_]
             warna = (0, 255, 0)  # HIJAU
