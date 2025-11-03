@@ -1,55 +1,96 @@
-# 🧠 Basic Face Recognition System
+# 🧠 Face Recognition System — Petra & Yulan
 
 Proyek ini merupakan implementasi dasar dari **sistem pengenalan wajah (Face Recognition)** menggunakan pustaka **OpenCV** dan algoritma **Local Binary Patterns Histograms (LBPH)**.  
-Sistem ini dirancang untuk:
-
-- Mendeteksi wajah secara **real-time** dari kamera.  
-- Melatih model untuk mengenali individu tertentu.  
-- Memberikan label identitas pada wajah yang terdeteksi.
+Sistem ini mampu **mendeteksi dan mengenali wajah secara real-time** dari kamera, menampilkan label identitas (nama) pada wajah yang terdeteksi, serta menghitung jumlah wajah yang muncul di layar.
 
 ---
 
-## 📁 Struktur dan Fungsionalitas Utama
+## 🎯 Tujuan Proyek
+
+1. **Mendeteksi wajah secara otomatis** menggunakan *Haar Cascade Classifier*.  
+2. **Melatih model pengenalan wajah** menggunakan algoritma *Local Binary Patterns Histogram (LBPH)*.  
+3. **Melakukan identifikasi real-time** terhadap wajah yang terdeteksi dari kamera.  
+4. **Menampilkan nama dan nilai confidence** sebagai indikator tingkat keyakinan model.
+
+---
+
+## 📁 Struktur Proyek
 
 | File / Direktori | Fungsi | Keterangan |
 |------------------|--------|------------|
-| `train.py` | **Training Model** | Membaca data gambar dari folder pelatihan (`data_train/`), mengekstrak fitur wajah menggunakan **LBPH**, dan menghasilkan file model `trainer.yml` serta daftar nama `names.txt`. |
-| `face_recog.py` | **Recognition System** | Menggunakan model `trainer.yml` untuk mendeteksi dan mengenali wajah secara **real-time** melalui kamera, serta menampilkan nama individu atau label *"Unknown"*. |
-| `detection.py` / `detection1.py` | **Basic Detection** | Implementasi dasar untuk mendeteksi wajah menggunakan **Haar Cascade** tanpa proses pengenalan identitas. |
-| `trainer.yml` | **Model Terlatih** | Output hasil pelatihan yang menyimpan parameter model **LBPH**. |
-| `names.txt` | **Daftar ID** | Output hasil pelatihan yang menyimpan label ID (nama individu) yang dikenali. |
-| `data_train/` | **Direktori Data (Lokal)** | Tempat penyimpanan foto-foto wajah individu yang digunakan untuk proses pelatihan. *(Tidak disertakan di repo publik)* |
+| `train.py` | 🧩 **Training Model** | Membaca dataset dari folder `data_train/`, mendeteksi wajah dengan *Haar Cascade*, mengekstrak fitur menggunakan **LBPH**, dan menghasilkan model `trainer.yml` serta daftar nama `names.txt`. |
+| `face_recog.py` | 🎥 **Recognition System** | Menggunakan model `trainer.yml` untuk mengenali wajah secara **real-time** melalui kamera, menampilkan nama individu dan confidence score. |
+| `detection.py` / `detection1.py` | 🧠 **Basic Detection** | Implementasi awal deteksi wajah menggunakan *Haar Cascade Classifier* tanpa proses pengenalan identitas. |
+| `trainer.yml` | 💾 **Model Terlatih** | File hasil pelatihan model LBPH yang disimpan dalam format terkompresi. |
+| `names.txt` | 🧾 **Daftar Label ID** | Berisi daftar nama individu yang dikenali oleh sistem. |
+| `data_train/` | 📸 **Dataset Lokal** | Folder berisi kumpulan foto wajah individu yang digunakan untuk proses training. *(Tidak disertakan di repositori publik demi privasi)* |
 
 ---
 
-## 🔒 Catatan Penting Mengenai Data Latih
+## ⚙️ Teknologi dan Metode
 
-Untuk menjaga **privasi dan integritas data**, direktori yang berisi gambar wajah individu (`data_train/`) **tidak diikutsertakan** dalam repositori ini.  
+### 🧱 1. Haar Cascade Classifier
+Digunakan untuk **deteksi wajah**.  
+Metode ini berbasis pada *feature detection*, yaitu mengenali pola visual seperti mata, hidung, dan mulut menggunakan serangkaian filter (*cascade of classifiers*).  
+Kelebihannya adalah deteksi cepat dan efisien pada citra *grayscale*.
 
-Repositori hanya mencakup:
-- Kode sumber utama (`.py` files)  
-- Model hasil pelatihan (`trainer.yml`)  
-- Daftar nama individu (`names.txt`)
+### 🧩 2. Local Binary Patterns Histogram (LBPH)
+Digunakan untuk **ekstraksi fitur dan klasifikasi wajah**.  
+LBPH bekerja dengan langkah-langkah berikut:
+- Mengubah gambar menjadi *grayscale*.  
+- Membandingkan nilai piksel dengan tetangganya untuk menghasilkan pola biner lokal (*Local Binary Pattern*).  
+- Mengubah hasilnya menjadi histogram tekstur yang mewakili ciri khas setiap wajah.  
 
----
+LBPH dikenal stabil terhadap perubahan pencahayaan dan cocok untuk implementasi pengenalan wajah sederhana.
 
-## ✅ Optimalisasi dan Kesimpulan
-
-Efektivitas serta akurasi sistem pengenalan wajah sangat bergantung pada **kualitas dan kuantitas data pelatihan**.  
-Berdasarkan prinsip dasar *Machine Learning*, model akan mencapai performa optimal jika memenuhi dua syarat utama berikut:
-
-1. **Kuantitas Data yang Memadai**  
-   Jumlah sampel wajah (foto) yang banyak dan beragam untuk setiap individu.
-
-2. **Kualitas Data yang Bagus**  
-   Data harus mencakup variasi kondisi dunia nyata seperti:
-   - Perubahan pencahayaan  
-   - Sudut pandang wajah (pose)  
-   - Ekspresi wajah  
-   - Resolusi gambar yang konsisten  
-
-Dengan data latih yang baik, tingkat **false positive** (salah kenal) dan **false negative** (gagal kenal) dapat diminimalisir, menghasilkan sistem yang lebih **robust** dan **andal**.
+### 🔁 3. Real-Time Recognition
+- Setiap frame dari webcam dianalisis menggunakan OpenCV.  
+- Area wajah diberi *bounding box* berwarna (hijau untuk dikenali, merah untuk tidak dikenal).  
+- Nama individu dan confidence score ditampilkan di atas wajah.  
+- Sistem terus memproses hingga pengguna menekan tombol **‘q’**.
 
 ---
 
-📌 *Dikembangkan sebagai proyek dasar Computer Vision menggunakan OpenCV dan LBPH Face Recognizer.*
+## 🔍 Insight dan Observasi
+
+Dari hasil pengujian sistem terhadap beberapa kondisi nyata, model mampu mengenali wajah dengan baik ketika:
+- Pencahayaan kamera cukup terang.  
+- Wajah menghadap langsung ke kamera.  
+- Dataset latih memiliki variasi ekspresi dan sudut pandang.
+
+Namun, dari pengamatan selama eksperimen:
+> 🔑 **Kunci utama performa sistem ada pada kualitas dan kuantitas dataset.**
+
+Beberapa temuan penting:
+- Jumlah foto per individu yang lebih banyak → meningkatkan keakuratan.  
+- Variasi pencahayaan dan ekspresi → membantu model mengenali lebih fleksibel.  
+- Gambar dengan resolusi rendah atau buram → menyebabkan penurunan akurasi.
+
+Dengan dataset yang cukup dan representatif, tingkat **false positive** (salah kenal) dan **false negative** (tidak dikenali) dapat ditekan seminimal mungkin.
+
+---
+
+## ✅ Kesimpulan
+
+Sistem ini berhasil mengimplementasikan tiga tahap utama:
+1. **Deteksi wajah real-time** menggunakan Haar Cascade.  
+2. **Pelatihan model wajah** menggunakan LBPH.  
+3. **Pengenalan individu** dari input kamera.
+
+Proyek ini dapat dijadikan **dasar untuk pengembangan sistem pengenalan wajah yang lebih lanjut**, seperti:
+- Sistem absensi otomatis,  
+- Keamanan berbasis kamera (CCTV smart system),  
+- Autentikasi pengguna dengan wajah.
+
+---
+
+## 🧩 Teknologi yang Digunakan
+- **Python 3.11+**  
+- **OpenCV (cv2)**  
+- **NumPy**  
+- **Haar Cascade Classifier**  
+- **LBPH Face Recognizer**
+
+---
+
+📌 *Dikembangkan sebagai proyek dasar Computer Vision menggunakan OpenCV dan LBPH Face Recognizer oleh Petra & Yulan.*
