@@ -84,6 +84,17 @@ Proyek ini dapat dijadikan **dasar untuk pengembangan sistem pengenalan wajah ya
 
 ---
 
+## ✅ Result/Outpu
+<img width="1366" height="768" alt="Screenshot (1854)" src="https://github.com/user-attachments/assets/183c72f1-ee49-4cf4-989e-02bdc99a5d81" />
+<img width="1366" height="768" alt="Screenshot (1848)" src="https://github.com/user-attachments/assets/f36e98ee-552f-4ae4-a911-4743246422f1" />
+<img width="1366" height="768" alt="Screenshot (1872)" src="https://github.com/user-attachments/assets/9a575c0d-29a9-4e63-b639-d3f5d190c8f4" />
+<img width="1366" height="768" alt="Screenshot (1874)" src="https://github.com/user-attachments/assets/870a618d-4777-459c-b017-97159211a2c1" />
+
+
+
+
+
+
 ## 🧩 Teknologi yang Digunakan
 - **Python 3.11+**  
 - **OpenCV (cv2)**  
